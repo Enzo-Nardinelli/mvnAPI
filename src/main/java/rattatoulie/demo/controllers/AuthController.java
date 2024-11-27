@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import rattatoulie.demo.models.UserModel;
 import rattatoulie.demo.repository.*;
+
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -38,6 +40,10 @@ public class AuthController {
         if (existingUser == null) {
             return ResponseEntity.badRequest().body(Map.of("Failure","Invalid credentials"));
         }
-        return ResponseEntity.ok(Map.of("Success","User logged in successfully"));
+        Map<String, Object> response = new HashMap<>();
+        String ID = existingUser.getId();
+        response.put("userId", ID);
+        System.out.println(existingUser.getId());
+        return ResponseEntity.ok(response);
     }
 }

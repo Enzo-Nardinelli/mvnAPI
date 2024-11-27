@@ -22,7 +22,6 @@ public class GameController {
     // Retrieve all games
     @GetMapping
     public List<Game> getAllGames() {
-        System.out.println("aaaaaaaaaaaa");
         return gameRepository.findAll();
     }
 
@@ -30,6 +29,7 @@ public class GameController {
     @PostMapping("/register")
     public ResponseEntity<Game> registerGame(@RequestBody Game game) {
         Game savedGame = gameRepository.save(game);
+        System.out.println(game);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGame);
     }
 

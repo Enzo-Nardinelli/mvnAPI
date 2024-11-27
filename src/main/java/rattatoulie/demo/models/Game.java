@@ -11,15 +11,17 @@ public class Game {
     private String genre;
     private String description;
     private double price;
+    private String imgURL;
 
     // Constructors
     public Game() {}
 
-    public Game(String title, String genre, String description, double price) {
+    public Game(String title, String genre, String description, double price, String imgURL) {
         this.title = title;
         this.genre = genre;
         this.description = description;
         this.price = price;
+        this.imgURL = imgURL;
     }
 
     // Getters and Setters
@@ -33,4 +35,22 @@ public class Game {
     public void setDescription(String description) { this.description = description; }
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+    public String getImgURL(){
+        return this.imgURL;
+    }
+    public void setImgURL(String imgURL){
+        this.imgURL = imgURL;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", imgURL='" + imgURL + '\'' +
+                '}';
+    }
 }
