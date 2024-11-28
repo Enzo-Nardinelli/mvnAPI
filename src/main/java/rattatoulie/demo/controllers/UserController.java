@@ -23,18 +23,20 @@ public class UserController {
     private UserRepository userRepository;
 
     @PutMapping("/{id}/carrinho/add")
-    public ResponseEntity<UserModel> addToCarrinho(@PathVariable String id, @RequestBody int jogoId) {
-        UserModel user = userRepository.findById(id).orElse(null);
+    public ResponseEntity<UserModel> addToCarrinho(@PathVariable String id, @RequestBody String jogoId) {
+        String idWithoutQuotes = id.replace("\"", "");
+        String jogoIdWithoutQuotes = jogoId.replace("\"", "");
+        UserModel user = userRepository.findById(idWithoutQuotes).orElse(null);
         if (user == null) {
             return ResponseEntity.notFound().build();
         }
-        user.addToCarrinho(jogoId);
+        user.addToCarrinho(jogoIdWithoutQuotes);
         userRepository.save(user);
         return ResponseEntity.ok(user);
     }
 
     @PutMapping("/{id}/carrinho/remove")
-    public ResponseEntity<UserModel> removeFromCarrinho(@PathVariable String id, @RequestBody int jogoId) {
+    public ResponseEntity<UserModel> removeFromCarrinho(@PathVariable String id, @RequestBody String jogoId) {
         UserModel user = userRepository.findById(id).orElse(null);
         if (user == null) {
             return ResponseEntity.notFound().build();
@@ -46,7 +48,9 @@ public class UserController {
 
     @PutMapping("/{id}/carrinho/finalizar")
     public ResponseEntity<UserModel> finalizarCompra(@PathVariable String id) {
-        UserModel user = userRepository.findById(id).orElse(null);
+        String idWithoutQuotes = id.replace("\"", "");
+        UserModel user = userRepository.findById(idWithoutQuotes).orElse(null);
+        System.out.println(idWithoutQuotes);
         if (user == null) {
             return ResponseEntity.notFound().build();
         }
