@@ -42,8 +42,12 @@ public class AuthController {
         }
         Map<String, Object> response = new HashMap<>();
         String ID = existingUser.getId();
+        String Carrinho = existingUser.getCarrinho().toString();
+        String Jogos = existingUser.getJogos().toString();
         response.put("userId", ID);
-        System.out.println(existingUser.getId());
+        response.put("userCarrinho", Carrinho);
+        response.put("userJogos", Jogos);
+        System.out.println(Jogos);
         return ResponseEntity.ok(response);
     }
 }
