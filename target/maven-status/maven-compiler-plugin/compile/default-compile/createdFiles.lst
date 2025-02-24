@@ -1,0 +1,10 @@
+rattatoulie\demo\DemoApplication.class
+rattatoulie\demo\controllers\GlobalExceptionHandler.class
+rattatoulie\demo\controllers\AuthController.class
+rattatoulie\demo\models\Game.class
+rattatoulie\demo\models\UserModel.class
+rattatoulie\demo\controllers\HelloController.class
+rattatoulie\demo\controllers\GameController.class
+rattatoulie\demo\repository\GameRepository.class
+rattatoulie\demo\controllers\UserController.class
+rattatoulie\demo\repository\UserRepository.class
